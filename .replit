@@ -1,10 +1,19 @@
 
-entrypoint = "index.html"
+entrypoint = "my-app/index.html"
 modules = ["nodejs-22"]
 hidden = [".config", "package-lock.json"]
 
 [nix]
 channel = "stable-24_11"
 
-[run]
-command = ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+[workflows]
+runButton = "Run React App"
+
+[[workflows.workflow]]
+name = "Run React App"
+author = 34932146
+mode = "sequential"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd my-app && npm install && npm run dev -- --host 0.0.0.0 --port 5000"
