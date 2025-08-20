@@ -1,5 +1,5 @@
 
-entrypoint = "my-app/index.html"
+entrypoint = "my-app/src/main.jsx"
 modules = ["nodejs-22"]
 hidden = [".config", "package-lock.json"]
 
@@ -17,3 +17,7 @@ mode = "sequential"
 [[workflows.workflow.tasks]]
 task = "shell.exec"
 args = "cd my-app && npm install && npm run dev -- --host 0.0.0.0 --port 5000"
+
+[[ports]]
+localPort = 5000
+externalPort = 80
